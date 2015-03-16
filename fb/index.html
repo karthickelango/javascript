@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+     $(".footer").keypress(function(e){
+	
+        if(e.keyCode==13) {	
+		var a = $(".footer").val();
+				if(a==""){
+			alert("comment should not be empty");
+        	} else
+        	{
+                
+        var b = $(".app").prepend("<div class='call clearfix'><div class='bg '><img src='image/twitter.png'></div><div class='txt'><a href='#'>Twitter</a>"+a+"</div> <div class='like'> <a href='#' onclick='liketxt(this);'>Like.</a><a href='#'>Reply.</a> <img src='image/like-icon.png'> <span class='likecount'></span> </div> </div>");
+        $(".footer").val("");
+        	}
+             } 
+              
+      
+});
+});
+     
+
+
+    function liketxt(that)
+{   
+     
+    
+     var b =  $(that).closest(".like").find(".likecount");
+     var c = b.text();
+     if(c=="")
+     {
+        c=1;
+    
+    }else {
+        c=parseInt(c)+1;
+    }
+
+      b.html(c);
+      b.append("likes");
+  }
+
+    
+   
+    var i=0;
+
+function increase()
+{
+i++;
+$(".inc").html(i);
+$(".inc").append("likes");
+}
+function display()
+{
+    $(".app").fadeToggle("slow");
+}
+</script>
+</head>
+<body>
+<div class="container clearfix"> 
+<div class="face"> 
+<img src="image/face.png"><a href="#">Facebook</a>
+</div> 
+<p>Have a nice day...</p>
+<div class="fb">
+</div>
+<div class="row">
+	<span><a href="#" onclick="increase();">Like .</a><a href="#">Share .</a><a href="#" onclick="display();">Comment .</a></span><span><img src="image/like-icon.png"></span><span class="inc"></span>
+</div>
+<div class="comment">
+<img src="image/twitter.png">   
+<input type="text" class="footer" placeholder="Write a comment...">
+</div>
+<div class="app">
+</div>       
+</div>
+</body>
+</html>
